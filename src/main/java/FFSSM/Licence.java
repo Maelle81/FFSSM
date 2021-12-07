@@ -11,9 +11,9 @@ public class Licence {
 
     public String numero;
 
-    public LocalDate delivrance;
+    public static LocalDate delivrance;
 
-    public Club club;
+    public static Club club;
 
     public Licence(Personne possesseur, String numero, LocalDate delivrance, Club club) {
         this.possesseur = possesseur;
@@ -45,8 +45,15 @@ public class Licence {
      * @return vrai si valide à la date d
      **/
     public boolean estValide(LocalDate d) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        
+        //comparer pour que pour que la licence date moins d'un an par rapport à la date renter en paramètre
+        LocalDate d2 = delivrance.plusYears(1);
+        if(d.isAfter(d2)){
+            return false;
+        }else{        
+        return true;
+        }
+                
     }
 
 }
