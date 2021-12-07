@@ -17,7 +17,9 @@ public class Club {
 
     public String telephone;
     
-    private Set<Plongee> plongee = new HashSet<Plongee>();
+    public Set<Licence> lesLicences = new HashSet<>();
+    
+    public Set<Plongee> lesPlongees = new HashSet<>();
 
     public Club(Moniteur president, String nom, String adresse, String telephone) {
         this.president = president;
@@ -33,9 +35,9 @@ public class Club {
      * @return l'ensemble des plongées non conformes
      */
     public Set<Plongee> plongeesNonConformes() {
-        Set<Plongee> nonConforme = new HashSet<Plongee>();
-        for(Plongee plongee : plongee){
-            if(Plongee.estConforme()==false){
+        Set<Plongee> nonConforme = new HashSet<>();
+        for(Plongee plongee : lesPlongees){
+            if(plongee.estConforme()==false){
                 nonConforme.add(plongee);
             }
         }
@@ -47,7 +49,7 @@ public class Club {
      * @param p la nouvelle plongée
      */
     public void organisePlongee(Plongee p) {
-        plongee.add(p);
+        lesPlongees.add(p);
     }
     
     
