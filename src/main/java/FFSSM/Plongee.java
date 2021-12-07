@@ -10,17 +10,17 @@ import java.util.Set;
 
 public class Plongee {
 
-    public static Site lieu;
+    public Site lieu;
 
-    public static Moniteur chefDePalanquee;
+    public Moniteur chefDePalanquee;
 
-    public static LocalDate date;
+    public LocalDate date;
 
-    public static int profondeur;
+    public int profondeur;
 
-    public static int duree;
+    public int duree;
 
-    private static Set<Plongeur> lesPlongeurs = new HashSet<Plongeur>();
+    public Set<Plongeur> lesPlongeurs = new HashSet<Plongeur>();
 
     public Plongee(Site lieu, Moniteur chefDePalanquee, LocalDate date, int profondeur, int duree) {
         this.lieu = lieu;
@@ -36,19 +36,19 @@ public class Plongee {
         return date;
     }
 
-    public static Moniteur getChefDePalanquee() {
+    public Moniteur getChefDePalanquee() {
         return chefDePalanquee;
     }
 
-    public static int getProfondeur() {
+    public int getProfondeur() {
         return profondeur;
     }
 
-    public static int getDuree() {
+    public int getDuree() {
         return duree;
     }
 
-    public static Site getLieu() {
+    public Site getLieu() {
         return lieu;
     }
     
@@ -63,10 +63,10 @@ public class Plongee {
      *
      * @return vrai si la plongée est conforme
      */
-    public static boolean estConforme() {
+    public boolean estConforme() {
         
-        for (Plongeur lesPlongeurs : lesPlongeurs) {
-            if (lesPlongeurs.getLicence().estValide(date)) {
+        for (Plongeur participant : lesPlongeurs) {
+            if (participant.getLicence().estValide(date)) {
                 return true;
             }
         }

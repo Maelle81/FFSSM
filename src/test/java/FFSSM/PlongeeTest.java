@@ -26,14 +26,14 @@ public class PlongeeTest {
     Moniteur Pierrette;
     Plongeur Paulette, Jacqueline;
     Site site1;
-    LocalDate dateNaiss = new LocalDate.of(1985,5,26);
-    LocalDate datePlongee = new LocalDate.of(2021,12,7);
+    LocalDate dateNaiss , datePlongee;
     Plongee p1;
       
        
     @BeforeEach
     public void setUp() {
-        
+        datePlongee =  LocalDate.of(2021,12,7);
+        dateNaiss = LocalDate.of(1985,5,26);
         CPC = new Club(Pierrette, "Club de Plongée de Castres","102 boulevard des peupliers" , "0563247896");
         site1 = new Site("site1", "épave de bateau");
         Pierrette = new Moniteur("4023", "Dupont", "Pierrette", "15 avenue des lys", "0758693214", dateNaiss, 5, 1056);

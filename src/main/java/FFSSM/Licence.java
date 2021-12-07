@@ -44,7 +44,7 @@ public class Licence {
      * @param d la date à tester
      * @return vrai si valide à la date d
      **/
-    public boolean estValide(LocalDate d) {
+    public static boolean estValide(LocalDate d) {
         
         //comparer pour que pour que la licence date moins d'un an par rapport à la date renter en paramètre
         LocalDate d2 = delivrance.plusYears(1);
