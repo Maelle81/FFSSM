@@ -26,8 +26,8 @@ import java.util.Set;
  */
 public class MoniteurTest {
     
-    Club CPC;
-    Moniteur Pierrette, Paul;
+    Club cpc;
+    Moniteur pierrette, paul;
     Plongee plg1;
     Site site1;
     LocalDate dateNaiss1, dateNaiss2;
@@ -37,9 +37,9 @@ public class MoniteurTest {
         
         dateNaiss1 = LocalDate.of(1985, 3, 10);
         dateNaiss2 = LocalDate.of(1970, 6, 15);
-        Pierrette = new Moniteur("4023", "Dupont", "Pierrette", "15 avenue des lys", "0758693214", dateNaiss2, 5, 1056);
-        CPC = new Club(Pierrette, "Club de Plongée de Castres","102 boulevard des peupliers" , "0563247896");
-        Paul = new Moniteur("4701", "Dujardin", "Paul", "5 rue des roses", "0236789145", dateNaiss1, 5, 1085);
+        pierrette = new Moniteur("4023", "Dupont", "Pierrette", "15 avenue des lys", "0758693214", dateNaiss2, 5, 1056);
+        cpc= new Club(pierrette, "Club de Plongée de Castres","102 boulevard des peupliers" , "0563247896");
+        paul = new Moniteur("4701", "Dujardin", "Paul", "5 rue des roses", "0236789145", dateNaiss1, 5, 1085);
         
 
     }
@@ -50,9 +50,9 @@ public class MoniteurTest {
     
     @Test
     public void testEmployeurActuel() {
-        assertEquals(Paul.employeurActuel(), Optional.empty(), "Le moniteur ne doit pas avoir un employeur");
-        Paul.nouvelleEmbauche(CPC, LocalDate.of(2020,8,24));
-        assertEquals(Paul.employeurActuel(),Optional.ofNullable(CPC), "Le moniteur est embauché au CPC");
+        assertEquals(paul.employeurActuel(), Optional.empty(), "Le moniteur ne doit pas avoir un employeur");
+        paul.nouvelleEmbauche(cpc, LocalDate.of(2020,8,24));
+        assertEquals(paul.employeurActuel(),Optional.ofNullable(cpc), "Le moniteur est embauché au CPC");
         
     }
 
@@ -61,10 +61,10 @@ public class MoniteurTest {
      */
     @Test
     public void testNouvelleEmbauche() {
-        Paul.nouvelleEmbauche(CPC, LocalDate.of(2020, 8, 24));
-        assertEquals(LocalDate.of(2020, 8, 24), Paul.lesEmbauches.get(Paul.lesEmbauches.size()-1).getDebut(), "Le moniteur a été embauché à cette date");
-        assertEquals(Paul, Paul.lesEmbauches.get(Paul.lesEmbauches.size()-1).getEmploye(), "Le moniteur a été embauché");
-        assertEquals(CPC, Paul.lesEmbauches.get(Paul.lesEmbauches.size()-1).getEmployeur(), "Le moniteur est embauché dans le bon club");
+        paul.nouvelleEmbauche(cpc, LocalDate.of(2020, 8, 24));
+        assertEquals(LocalDate.of(2020, 8, 24), paul.lesEmbauches.get(paul.lesEmbauches.size()-1).getDebut(), "Le moniteur a été embauché à cette date");
+        assertEquals(paul,paul.lesEmbauches.get(paul.lesEmbauches.size()-1).getEmploye(), "Le moniteur a été embauché");
+        assertEquals(cpc, paul.lesEmbauches.get(paul.lesEmbauches.size()-1).getEmployeur(), "Le moniteur est embauché dans le bon club");
     }
 
     /**
@@ -73,18 +73,18 @@ public class MoniteurTest {
     
     @Test
     public void testTerminerEmbauche() {
-        Pierrette.nouvelleEmbauche(CPC, LocalDate.of(2020, 9, 20));
-        Pierrette.terminerEmbauche(LocalDate.of(2021, 5, 6));
-        assertEquals(LocalDate.of(2021,5, 6), Pierrette.lesEmbauches.get(Pierrette.lesEmbauches.size()-1).getFin(),"Le moniteur a fini son contrat à cette date");
+        pierrette.nouvelleEmbauche(cpc, LocalDate.of(2020, 9, 20));
+        pierrette.terminerEmbauche(LocalDate.of(2021, 5, 6));
+        assertEquals(LocalDate.of(2021,5, 6), pierrette.lesEmbauches.get(pierrette.lesEmbauches.size()-1).getFin(),"Le moniteur a fini son contrat à cette date");
     }
     
     @Test
     public void TestEmplois(){
         List<Embauche> lesEmbauches = new LinkedList<>();
-        Embauche e = new Embauche(LocalDate.of(2020,9,20), Paul, CPC);
+        Embauche e = new Embauche(LocalDate.of(2020,9,20), paul, cpc);
         lesEmbauches.add(e);
-        Paul.nouvelleEmbauche(CPC, LocalDate.of(2020, 9, 20));
-        assertEquals(Paul.lesEmbauches, Paul.emplois(), "Ajout de l'emploi");
+        paul.nouvelleEmbauche(cpc, LocalDate.of(2020, 9, 20));
+        assertEquals(paul.lesEmbauches, paul.emplois(), "Ajout de l'emploi");
        
     }
     

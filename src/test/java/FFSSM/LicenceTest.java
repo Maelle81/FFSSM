@@ -19,24 +19,25 @@ import FFSSM.*;
  */
 public class LicenceTest {
 
-    Club CPC;
-    Moniteur Pierrette;
-    LocalDate date1 = LocalDate.of(2021, 11, 20);
-    LocalDate date2 = LocalDate.of(2022, 9, 7);
-    LocalDate date3 = LocalDate.of(2023, 1, 15);
-    LocalDate dateNaiss = LocalDate.of(2000, 10, 2);
+    Club cpc;
+    Moniteur pierrette;
+    LocalDate date1 ,date2,date3,dateNaiss;
     Licence licence1;
 
     @BeforeEach
     public void setUp() {
-        CPC = new Club(Pierrette, "Club de Plongée de Castres", "102 boulevard des peupliers", "0563247896");
-        Pierrette = new Moniteur("4023", "Dupont", "Pierrette", "15 avenue des lys", "0758693214", dateNaiss, 5, 1056);
-        licence1 = new Licence(Pierrette, "7045", date1, CPC);
+        date1 = LocalDate.of(2021, 11, 20);
+        date2 = LocalDate.of(2022, 9, 7);
+        date3 = LocalDate.of(2023, 1, 15);
+        dateNaiss = LocalDate.of(2000, 10, 2);
+        cpc = new Club(pierrette, "Club de Plongée de Castres", "102 boulevard des peupliers", "0563247896");
+        pierrette = new Moniteur("4023", "Dupont", "Pierrette", "15 avenue des lys", "0758693214", dateNaiss, 5, 1056);
+        licence1 = new Licence(pierrette, "7045", date1, cpc);
     }
 
     @Test
     public void testGetPossesseur() {
-        assertEquals(licence1.getPossesseur(), Pierrette, "Le possesseur doit-etre pierrette.");
+        assertEquals(licence1.getPossesseur(), pierrette, "Le possesseur doit-etre pierrette.");
     }
 
     @Test
@@ -51,7 +52,7 @@ public class LicenceTest {
 
     @Test
     public void testGetClub() {
-        assertEquals(licence1.getClub(), CPC, "Cette licence n'est pas delivrée par ce club");
+        assertEquals(licence1.getClub(), cpc, "Cette licence n'est pas delivrée par ce club");
     }
 
     @Test
